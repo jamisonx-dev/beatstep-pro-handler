@@ -1,5 +1,5 @@
 """
-beatstep.protocol -- the Arturia BeatStep Pro configuration SysEx protocol.
+beatstep_handler.protocol -- the Arturia BeatStep Pro configuration SysEx protocol.
 
 Pure data + byte builders. No I/O, no third-party dependencies. This is the
 correctness-critical core and is unit-tested off-hardware.

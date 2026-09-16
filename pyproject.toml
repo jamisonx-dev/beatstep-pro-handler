@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "beatstep-pro"
+name = "beatstep-pro-handler"
 version = "0.1.0"
 description = "Read and write every Arturia BeatStep Pro configuration parameter over USB SysEx — headless, from Python or the command line."
 readme = "README.md"
@@ -23,17 +23,17 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jamisonx-dev/beatstep-pro"
-Repository = "https://github.com/jamisonx-dev/beatstep-pro"
+Homepage = "https://github.com/jamisonx-dev/beatstep-pro-handler"
+Repository = "https://github.com/jamisonx-dev/beatstep-pro-handler"
 
 [project.optional-dependencies]
 test = ["pytest"]
 
 [project.scripts]
-bsp = "beatstep.cli:main"
+bsp = "beatstep_handler.cli:main"
 
 [tool.setuptools]
-packages = ["beatstep"]
+packages = ["beatstep_handler"]
 
 [tool.setuptools.package-data]
-beatstep = ["data/*.json"]
+beatstep_handler = ["data/*.json"]

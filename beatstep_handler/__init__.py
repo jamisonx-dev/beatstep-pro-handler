@@ -2,7 +2,7 @@
 beatstep -- read and write every Arturia BeatStep Pro configuration parameter
 over USB SysEx: global settings and per-control (knob/pad/step) assignments.
 
-    from beatstep import BeatStepPro, PARAM_GLOBAL
+    from beatstep_handler import BeatStepPro, PARAM_GLOBAL
     bsp = BeatStepPro()
     print(bsp.read(PARAM_GLOBAL, 0x06))   # global User Channel
 

@@ -7,7 +7,7 @@ Arturia's MIDI Control Center device dictionary.
 WHY THIS IS A GENERATOR, NOT SHIPPED DATA
 -----------------------------------------
 The BeatStep Pro's parameter *numbers* and value *enums* are interoperability
-facts (this library speaks them in beatstep/protocol.py). But the friendly
+facts (this library speaks them in beatstep_handler/protocol.py). But the friendly
 parameter NAMES ("Pad Poly Aftertouch", "User Knob Acceleration", ...) are
 Arturia's, and live in their MIDI Control Center dictionary. Rather than
 redistribute Arturia's data, this tool builds the named table from the copy you

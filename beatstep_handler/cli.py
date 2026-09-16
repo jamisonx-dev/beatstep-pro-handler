@@ -1,5 +1,5 @@
 """
-beatstep.cli -- a command-line tool for the BeatStep Pro.
+beatstep_handler.cli -- a command-line tool for the BeatStep Pro.
 
     bsp read 41 06                 # read global param 0x41/0x06 (User Channel)
     bsp write 41 06 9              # set it to 9 (channel 10, 0-based)
@@ -7,7 +7,7 @@ beatstep.cli -- a command-line tool for the BeatStep Pro.
     bsp globals                    # dump every global setting
     bsp globals --tables t.json    # ...with friendly names from your MCC table
 
-Parameters are addressed by their hex ids (see the README / beatstep.protocol).
+Parameters are addressed by their hex ids (see the README / beatstep_handler.protocol).
 A name table built by tools/gen_tables.py from your own MCC install is optional
 and only adds human-readable names to `globals`.
 """

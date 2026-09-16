@@ -1,5 +1,5 @@
 # --- never commit Arturia's own files --------------------------------------
-# The bundled name table (beatstep/data/beatstep_tables.json) is fine to ship:
+# The bundled name table (beatstep_handler/data/beatstep_tables.json) is fine to ship:
 # it is parameter numbers + value enums (interoperability facts) plus generic,
 # industry-standard labels and our own grouping. But Arturia's raw MCC device
 # dictionary and their template/project files are Arturia's IP -- never commit

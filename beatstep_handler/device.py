@@ -1,7 +1,7 @@
 """
-beatstep.device -- read and write BeatStep Pro parameters over USB SysEx.
+beatstep_handler.device -- read and write BeatStep Pro parameters over USB SysEx.
 
-    from beatstep import BeatStepPro, PARAM_GLOBAL
+    from beatstep_handler import BeatStepPro, PARAM_GLOBAL
     bsp = BeatStepPro()
     print(bsp.read(PARAM_GLOBAL, 0x06))     # global User Channel
     bsp.write(PARAM_GLOBAL, 0x06, 9)        # set User Channel to 10 (0-based)

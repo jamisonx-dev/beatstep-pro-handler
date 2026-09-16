@@ -1,5 +1,5 @@
 """Read a few global settings from a connected BeatStep Pro."""
-from beatstep import BeatStepPro, PARAM_GLOBAL
+from beatstep_handler import BeatStepPro, PARAM_GLOBAL
 
 with BeatStepPro(verbose=True) as bsp:
     # (paramId, itemId) pairs. 0x41 = the global bank; item = the global's id.

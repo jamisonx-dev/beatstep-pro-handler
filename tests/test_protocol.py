@@ -1,4 +1,4 @@
-"""Correctness tests for beatstep.protocol -- the SysEx wire format, proven
+"""Correctness tests for beatstep_handler.protocol -- the SysEx wire format, proven
 byte for byte with no hardware and no dependencies.
 
 Run: python -m pytest   (or: python tests/test_protocol.py)
@@ -7,7 +7,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from beatstep import protocol as P  # noqa: E402
+from beatstep_handler import protocol as P  # noqa: E402
 
 
 def test_write_frame_exact():

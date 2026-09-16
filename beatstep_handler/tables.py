@@ -1,5 +1,5 @@
 """
-beatstep.tables -- optional friendly names for BeatStep Pro parameters.
+beatstep_handler.tables -- optional friendly names for BeatStep Pro parameters.
 
 A name table maps parameter/value numbers to human-readable labels (functional,
 industry-standard terminology). One is bundled so the library and `bsp globals`
@@ -27,7 +27,7 @@ def load(path=None):
             return json.load(f)
     if _res_files is not None:
         try:
-            txt = _res_files("beatstep").joinpath("data/beatstep_tables.json").read_text(encoding="utf-8")
+            txt = _res_files("beatstep_handler").joinpath("data/beatstep_tables.json").read_text(encoding="utf-8")
             return json.loads(txt)
         except Exception:
             pass

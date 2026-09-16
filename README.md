@@ -1,4 +1,4 @@
-# beatstep-pro
+# beatstep-pro-handler
 
 Read and write **every** configuration parameter of the Arturia **BeatStep Pro**
 over USB SysEx — global settings and per-control (knob / pad / step) assignments —
@@ -11,7 +11,7 @@ bsp globals               # dump every global setting, with names
 ```
 
 ```python
-from beatstep import BeatStepPro, PARAM_GLOBAL
+from beatstep_handler import BeatStepPro, PARAM_GLOBAL
 with BeatStepPro() as bsp:
     print(bsp.read(PARAM_GLOBAL, 0x06))       # -> current User Channel
     bsp.write(PARAM_GLOBAL, 0x06, 9, verify=True)
@@ -37,7 +37,7 @@ READ:   F0 00 20 6B 7F 42 01 00 <paramId> <itemId>         F7
 - LIST values are **non-contiguous** (a knob's Mode uses 0,1,4,12,13,14,15) —
   send the value the device expects, not an index.
 
-See [`beatstep/protocol.py`](beatstep/protocol.py) — pure, dependency-free, and
+See [`beatstep_handler/protocol.py`](beatstep_handler/protocol.py) — pure, dependency-free, and
 unit-tested byte for byte.
 
 ## Install
@@ -45,12 +45,12 @@ unit-tested byte for byte.
 From GitHub (works today, any OS):
 
 ```bash
-pip install git+https://github.com/jamisonx-dev/beatstep-pro.git
+pip install git+https://github.com/jamisonx-dev/beatstep-pro-handler.git
 ```
 
 Runtime needs only **`python-rtmidi`** (installed automatically).
 
-> A PyPI release (`pip install beatstep-pro`) is planned but **not yet
+> A PyPI release (`pip install beatstep-pro-handler`) is planned but **not yet
 > published** — use the GitHub install above for now.
 
 **Platform: Windows, macOS, and Linux.** MIDI goes through python-rtmidi, which
@@ -83,7 +83,7 @@ To refresh it from a newer firmware/MCC than the bundled one, regenerate it from
 **your own** Arturia MIDI Control Center install:
 
 ```bash
-python tools/gen_tables.py "/path/to/your/BeatStepPro.json" -o beatstep/data/beatstep_tables.json
+python tools/gen_tables.py "/path/to/your/BeatStepPro.json" -o beatstep_handler/data/beatstep_tables.json
 ```
 
 > This project does **not** redistribute Arturia's MIDI Control Center device
