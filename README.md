@@ -46,25 +46,26 @@ unit-tested byte for byte.
 pip install beatstep-pro
 ```
 
-Runtime needs **`python-rtmidi`** (installed automatically) and the ALSA
-**`amidi`** command-line tool (`sudo apt install alsa-utils`).
+Runtime needs only **`python-rtmidi`** (installed automatically).
 
-**Platform:** Linux (a Raspberry Pi, a Linux laptop). The device is driven
-through ALSA rawmidi. **Connect the BSP by USB — its configuration SysEx is
-ignored over DIN** (real-time MIDI over DIN works fine, that's just not what this
-tool does).
+**Platform: Windows, macOS, and Linux.** MIDI goes through python-rtmidi, which
+runs on all three. **Connect the BSP by USB — its configuration SysEx is ignored
+over DIN** (real-time MIDI over DIN works fine, that's just not what this tool
+does).
 
-## How it talks to the device (hard-won)
+## How it talks to the device
 
-- **Send** via ALSA rawmidi (`amidi -S`). A plain rtmidi *send* does not reliably
-  reach the config endpoint; the rawmidi path does.
-- **Capture** replies via python-rtmidi co-subscribed to the BSP's config port —
-  works even while another program also holds the device.
+- **Send and capture** via python-rtmidi on the BSP's USB config port. The device
+  answers a read with the parameter's current live value.
 - The device **drops large request bursts**, so reads are paced in small chunks
   with a bounded retry.
+- All verified against real hardware, cross-checked byte-for-byte against a
+  reference instrument, and covered by tests.
 
-All verified against real hardware, cross-checked byte-for-byte against a
-reference instrument, and covered by tests.
+> **Running alongside another app that owns the BSP?** (e.g. a host program that
+> holds the sequencer port.) Pass `BeatStepPro(backend="amidi")` on Linux — it
+> sends through ALSA rawmidi (`amidi`, from `alsa-utils`) while still capturing
+> replies via rtmidi. Not needed for normal standalone use.
 
 ## Friendly names (optional)
 
