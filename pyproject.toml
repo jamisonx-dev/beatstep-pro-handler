@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beatstep-pro"
+version = "0.1.0"
+description = "Read and write every Arturia BeatStep Pro configuration parameter over USB SysEx — headless, from Python or the command line."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "jamisonx-dev" }]
+keywords = ["arturia", "beatstep", "beatstep pro", "midi", "sysex", "controller", "hardware"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Multimedia :: Sound/Audio :: MIDI",
+    "Intended Audience :: Developers",
+]
+dependencies = [
+    "python-rtmidi>=1.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/jamisonx-dev/beatstep-pro"
+Repository = "https://github.com/jamisonx-dev/beatstep-pro"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+bsp = "beatstep.cli:main"
+
+[tool.setuptools]
+packages = ["beatstep"]
+
+[tool.setuptools.package-data]
+beatstep = ["data/*.json"]

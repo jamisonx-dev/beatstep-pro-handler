@@ -1,0 +1,25 @@
+# --- never commit Arturia's own files --------------------------------------
+# The bundled name table (beatstep/data/beatstep_tables.json) is fine to ship:
+# it is parameter numbers + value enums (interoperability facts) plus generic,
+# industry-standard labels and our own grouping. But Arturia's raw MCC device
+# dictionary and their template/project files are Arturia's IP -- never commit
+# those, and never commit the reference folder they come from.
+BeatStepPro.json
+BeatStepProTest.json
+*.beatsteppro
+*.beatsteppro_ds
+*.led
+
+# --- python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+*.bak
+*.save
+.DS_Store
