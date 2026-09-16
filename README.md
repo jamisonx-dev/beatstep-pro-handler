@@ -1,9 +1,12 @@
 # beatstep-pro-handler
 
-I went through and parsed both the midi center communications and the .beatsteppro template files included. In poking at it via a web gui, it was discovered that most options change immediately, opening up rather wild possibilities for contextual remapping, etc. I separated out the tools necessary to do so from my larger project and am presenting them here with hopes that it will be of use to others. In any event...
+Created as a way to get around having to use midi control center for config, but it uncovered some interesting things in the process. This started as a part of a larger project and this is me parting it off as tools for the larger community.
+I went through and parsed both the midi center communications and the .beatsteppro template files included with it, as well as my own. In poking at it via a test web gui, it was discovered that most options change immediately, opening up rather wild possibilities for contextual remapping, etc.
+Most of this is the summary Claude wrote about it with some notes by me when I felt necessary.
 
-Read and write **every** configuration parameter of the Arturia **BeatStep Pro**
-over USB SysEx — global settings and per-control: knob / pad / step/ channel assignments in control mode, PER PAD NOTE AND CHANNEL CHANGES IN DRUM MODE!!! This is something meant to be run headless, from Python or the command line, in service of whatever purposes one might have. No MIDI Control Center, no GUI.
+
+This reads and writes **every** configuration parameter of the Arturia **BeatStep Pro**
+over USB SysEx — global settings and per-control: knob / pad / step/ channel assignments in control mode, PER PAD NOTE AND CHANNEL CHANGES IN DRUM MODE!!! This is something meant to be run headless, from Python or the command line, in service of whatever purposes one might have. No MIDI Control Center, no GUI, but knock yourself out of you want to create one.
 
 ```bash
 bsp read 41 06            # read global param 0x41/0x06 (User Channel)
