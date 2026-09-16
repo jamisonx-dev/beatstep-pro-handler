@@ -1,8 +1,9 @@
 # beatstep-pro-handler
 
+I went through and parsed both the midi center communications and the .beatsteppro template files included. In poking at it via a web gui, it was discovered that most options change immediately, opening up rather wild possibilities for contextual remapping, etc. I separated out the tools necessary to do so from my larger project and am presenting them here with hopes that it will be of use to others. In any event...
+
 Read and write **every** configuration parameter of the Arturia **BeatStep Pro**
-over USB SysEx — global settings and per-control (knob / pad / step) assignments —
-headless, from Python or the command line. No MIDI Control Center, no GUI.
+over USB SysEx — global settings and per-control: knob / pad / step/ channel assignments in control mode, PER PAD NOTE AND CHANNEL CHANGES IN DRUM MODE!!! This is something meant to be run headless, from Python or the command line, in service of whatever purposes one might have. No MIDI Control Center, no GUI.
 
 ```bash
 bsp read 41 06            # read global param 0x41/0x06 (User Channel)
@@ -55,10 +56,8 @@ Or the latest straight from source:
 pip install git+https://github.com/jamisonx-dev/beatstep-pro-handler.git
 ```
 
-**Platform: Windows, macOS, and Linux.** MIDI goes through python-rtmidi, which
-runs on all three. **Connect the BSP by USB — its configuration SysEx is ignored
-over DIN** (real-time MIDI over DIN works fine, that's just not what this tool
-does).
+!!! Everything here is USB only — its configuration SysEx is ignored over DIN!!!
+
 
 ## How it talks to the device
 
@@ -85,7 +84,7 @@ To refresh it from a newer firmware/MCC than the bundled one, regenerate it from
 **your own** Arturia MIDI Control Center install:
 
 ```bash
-python tools/gen_tables.py "/path/to/your/BeatStepPro.json" -o beatstep_handler/data/beatstep_tables.json
+python tools/gen_tables.py "/PATH TO YOUR OWN FILE/BeatStepPro.json" -o beatstep_handler/data/beatstep_tables.json
 ```
 
 > This project does **not** redistribute Arturia's MIDI Control Center device
@@ -96,9 +95,9 @@ python tools/gen_tables.py "/path/to/your/BeatStepPro.json" -o beatstep_handler/
 
 - **Globals** (95 settable) and **per-control assignments** — full read/write.
 - **Project-scope** sequencer scalars are reachable by the same frame.
-- **Per-sequencer / per-step pattern data is out of scope** — the device
-  addresses it per-pattern in a bulk frame this uniform frame can't carry, so
-  writes to it don't take. This tool never pretends to set something it can't.
+
+
+Per-sequencer/per-step pattern data is out of scope — sorry, mane... this is just about making it hotmappable and exposing otherwise-hidden device options
 
 ## Tests
 
