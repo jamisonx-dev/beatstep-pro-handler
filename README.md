@@ -42,11 +42,16 @@ unit-tested byte for byte.
 
 ## Install
 
+From GitHub (works today, any OS):
+
 ```bash
-pip install beatstep-pro
+pip install git+https://github.com/jamisonx-dev/beatstep-pro.git
 ```
 
 Runtime needs only **`python-rtmidi`** (installed automatically).
+
+> A PyPI release (`pip install beatstep-pro`) is planned but **not yet
+> published** — use the GitHub install above for now.
 
 **Platform: Windows, macOS, and Linux.** MIDI goes through python-rtmidi, which
 runs on all three. **Connect the BSP by USB — its configuration SysEx is ignored
