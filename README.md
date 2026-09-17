@@ -1,13 +1,13 @@
 # beatstep-pro-handler
 
 Created as a way to get around having to use midi control center for config, but it uncovered some interesting things in the process. This started as a part of a larger project and this is me parting it off as tools for the larger community.
-I went through and parsed both the midi center communications and the .beatsteppro template files included with it, as well as my own. In poking at it via a test web gui, it was discovered that most options change immediately, opening up rather wild possibilities for contextual remapping, etc.
+I went through and parsed both the midi center communications and the .beatsteppro template files included with it, as well as my own. In poking at it in testing, it was discovered that most options change immediately, opening up rather wild possibilities for contextual remapping, etc.
 
-Most of this is the summary Claude wrote about it with some notes by me when I felt it was warranted:
+This tool reads and writes every configuration parameter of the Arturia BeatStep Pro over USB SysEx — global settings, knob/pad/step/channel assignments in control mode, live. The crazy bit is that it also unlocks note & channel changes PER PAD in drum mode, also live. I have only tested this last bit enough to see that it works.
 
+This is part of something I run headless on a pi, controlled by a larger audio/midi brain, so no GUI, but knock yourself out of you want to create one.
 
-This reads and writes **every** configuration parameter of the Arturia **BeatStep Pro**
-over USB SysEx — global settings and per-control: knob / pad / step/ channel assignments in control mode, PER PAD NOTE AND CHANNEL CHANGES IN DRUM MODE!!! This is something meant to be run headless, from Python or the command line, in service of whatever purposes one might have. No MIDI Control Center, no GUI, but knock yourself out of you want to create one.
+Most of the summary from here is Claude, but I read through and changed what I felt needed to be changed:
 
 ```bash
 bsp read 41 06            # read global param 0x41/0x06 (User Channel)
@@ -102,6 +102,7 @@ python tools/gen_tables.py "/PATH TO YOUR OWN FILE/BeatStepPro.json" -o beatstep
 
 
 Per-sequencer/per-step pattern data is out of scope — sorry, mane... this is just about making it hotmappable and exposing otherwise-hidden device options
+
 
 ## Tests
 
